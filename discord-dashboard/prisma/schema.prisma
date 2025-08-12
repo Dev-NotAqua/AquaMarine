@@ -1,0 +1,138 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  
+  // Discord specific
+  discordId     String?   @unique
+  discriminator String?
+  accessToken   String?
+  refreshToken  String?
+  
+  role          UserRole  @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Guild {
+  id          String   @id
+  name        String
+  icon        String?
+  ownerId     String
+  memberCount Int
+  
+  settings    GuildSettings?
+  logs        Log[]
+  stats       GuildStats[]
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model GuildSettings {
+  id            String  @id @default(cuid())
+  guildId       String  @unique
+  guild         Guild   @relation(fields: [guildId], references: [id], onDelete: Cascade)
+  
+  prefix        String  @default("!")
+  musicChannel  String?
+  logChannel    String?
+  welcomeChannel String?
+  
+  autoRole      String?
+  mutedRole     String?
+  
+  maxVolume     Int     @default(100)
+  maxQueueSize  Int     @default(50)
+  
+  enableWelcome Boolean @default(true)
+  enableLogging Boolean @default(true)
+  enableMusic   Boolean @default(true)
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Log {
+  id        String   @id @default(cuid())
+  guildId   String
+  guild     Guild    @relation(fields: [guildId], references: [id], onDelete: Cascade)
+  
+  type      LogType
+  action    String
+  userId    String
+  userName  String
+  targetId  String?
+  targetName String?
+  reason    String?
+  duration  String?
+  
+  metadata  String?
+  
+  createdAt DateTime @default(now())
+}
+
+model GuildStats {
+  id        String   @id @default(cuid())
+  guildId   String
+  guild     Guild    @relation(fields: [guildId], references: [id], onDelete: Cascade)
+  
+  type      String   // "messages", "voice", "commands", "music"
+  value     Int
+  metadata  String?
+  
+  createdAt DateTime @default(now())
+}
+
+enum UserRole {
+  USER
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum LogType {
+  MODERATION
+  MUSIC
+  SYSTEM
+  SECURITY
+}

@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  /* Royal Purple & Charcoal Color Palette */
+  --color-charcoal-50: #fafafa;
+  --color-charcoal-100: #f4f4f5;
+  --color-charcoal-200: #e4e4e7;
+  --color-charcoal-300: #d4d4d8;
+  --color-charcoal-400: #a1a1aa;
+  --color-charcoal-500: #71717a;
+  --color-charcoal-600: #52525b;
+  --color-charcoal-700: #3f3f46;
+  --color-charcoal-800: #27272a;
+  --color-charcoal-900: #18181b;
+  --color-charcoal-950: #09090b;
+  
+  /* Royal Purple Palette */
+  --color-royal-purple-50: #faf5ff;
+  --color-royal-purple-100: #f3e8ff;
+  --color-royal-purple-200: #e9d5ff;
+  --color-royal-purple-300: #d8b4fe;
+  --color-royal-purple-400: #c084fc;
+  --color-royal-purple-500: #a855f7;
+  --color-royal-purple-600: #9333ea;
+  --color-royal-purple-700: #7e22ce;
+  --color-royal-purple-800: #6b21a8;
+  --color-royal-purple-900: #581c87;
+  --color-royal-purple-950: #3b0764;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.grid-bg-dense {
+  background-size: 100px 100px;
+  background-image: linear-gradient(to right, #1a1a1a 1px, transparent 1px), linear-gradient(to bottom, #1a1a1a 1px, transparent 1px);
+  opacity: 0.4;
+}
+
+/* Grid background utilities */
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(147, 51, 234, 0.35) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(147, 51, 234, 0.35) 2px, transparent 2px);
+  background-size: 80px 80px;
+  background-position: -1px -1px;
+}
+
+.grid-bg-dense {
+  background-image: 
+    linear-gradient(rgba(147, 51, 234, 0.4) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(147, 51, 234, 0.4) 2px, transparent 2px);
+  background-size: 60px 60px;
+  background-position: -1px -1px;
+}
+
+.grid-bg-light {
+  background-image: 
+    linear-gradient(rgba(147, 51, 234, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(147, 51, 234, 0.3) 1px, transparent 1px);
+  background-size: 120px 120px;
+  background-position: -1px -1px;
+}
+
+.grid-bg-sm {
+  background-image: 
+    linear-gradient(rgba(147, 51, 234, 0.35) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(147, 51, 234, 0.35) 2px, transparent 2px);
+  background-size: 80px 80px;
+  background-position: -1px -1px;
+}
+
+.grid-bg-md {
+  background-image: 
+    linear-gradient(rgba(147, 51, 234, 0.35) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(147, 51, 234, 0.35) 2px, transparent 2px);
+  background-size: 80px 80px;
+  background-position: -1px -1px;
+}
+
+.grid-bg-lg {
+  background-image: 
+    linear-gradient(rgba(147, 51, 234, 0.35) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(147, 51, 234, 0.35) 2px, transparent 2px);
+  background-size: 80px 80px;
+  background-position: -1px -1px;
+}
+
+.dotted-bg {
+  background-image: radial-gradient(circle, rgba(147, 51, 234, 0.35) 2px, transparent 2px);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+}
+
+.dotted-bg-dense {
+  background-image: radial-gradient(circle, rgba(147, 51, 234, 0.4) 2px, transparent 2px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+
+.dotted-bg-sm {
+  background-image: radial-gradient(circle, rgba(147, 51, 234, 0.35) 2px, transparent 2px);
+  background-size: 60px 60px;
+}
+
+.dotted-bg-md {
+  background-image: radial-gradient(circle, rgba(147, 51, 234, 0.35) 2px, transparent 2px);
+  background-size: 60px 60px;
+}
+
+.dotted-bg-lg {
+  background-image: radial-gradient(circle, rgba(147, 51, 234, 0.35) 2px, transparent 2px);
+  background-size: 60px 60px;
+}
+
+/* Animated grid effects */
+@keyframes grid-pulse {
+  0%, 100% {
+    background-image: 
+      linear-gradient(rgba(147, 51, 234, 0.35) 2px, transparent 2px),
+      linear-gradient(90deg, rgba(147, 51, 234, 0.35) 2px, transparent 2px);
+  }
+  50% {
+    background-image: 
+      linear-gradient(rgba(147, 51, 234, 0.5) 2px, transparent 2px),
+      linear-gradient(90deg, rgba(147, 51, 234, 0.5) 2px, transparent 2px);
+  }
+}
+
+.animate-grid-pulse {
+  animation: grid-pulse 4s ease-in-out infinite;
+}
+
+/* Gradient overlays for depth */
+.grid-overlay {
+  position: relative;
+}
+
+.grid-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(2, 6, 23, 0) 0%,
+    rgba(2, 6, 23, 0.1) 50%,
+    rgba(2, 6, 23, 0.3) 100%
+  );
+  pointer-events: none;
+}
+
+/* Enhanced charcoal backgrounds */
+.bg-charcoal-gradient {
+  background: linear-gradient(135deg, var(--color-charcoal-900), var(--color-charcoal-950));
+}
+
+.bg-royal-purple-gradient {
+  background: linear-gradient(135deg, var(--color-royal-purple-800), var(--color-royal-purple-950));
+}
+
+.bg-charcoal-radial {
+  background: radial-gradient(circle at 50% 50%, var(--color-charcoal-800), var(--color-charcoal-950));
+}
+
+.text-charcoal-50 { color: var(--color-charcoal-50); }
+.text-charcoal-100 { color: var(--color-charcoal-100); }
+.text-charcoal-200 { color: var(--color-charcoal-200); }
+.text-charcoal-300 { color: var(--color-charcoal-300); }
+.text-charcoal-400 { color: var(--color-charcoal-400); }
+.text-charcoal-500 { color: var(--color-charcoal-500); }
+.text-charcoal-600 { color: var(--color-charcoal-600); }
+.text-charcoal-700 { color: var(--color-charcoal-700); }
+.text-charcoal-800 { color: var(--color-charcoal-800); }
+.text-charcoal-900 { color: var(--color-charcoal-900); }
+.text-charcoal-950 { color: var(--color-charcoal-950); }
+
+.text-royal-purple-50 { color: var(--color-royal-purple-50); }
+.text-royal-purple-100 { color: var(--color-royal-purple-100); }
+.text-royal-purple-200 { color: var(--color-royal-purple-200); }
+.text-royal-purple-300 { color: var(--color-royal-purple-300); }
+.text-royal-purple-400 { color: var(--color-royal-purple-400); }
+.text-royal-purple-500 { color: var(--color-royal-purple-500); }
+.text-royal-purple-600 { color: var(--color-royal-purple-600); }
+.text-royal-purple-700 { color: var(--color-royal-purple-700); }
+.text-royal-purple-800 { color: var(--color-royal-purple-800); }
+.text-royal-purple-900 { color: var(--color-royal-purple-900); }
+.text-royal-purple-950 { color: var(--color-royal-purple-950); }
+
+.bg-charcoal-50 { background-color: var(--color-charcoal-50); }
+.bg-charcoal-100 { background-color: var(--color-charcoal-100); }
+.bg-charcoal-200 { background-color: var(--color-charcoal-200); }
+.bg-charcoal-300 { background-color: var(--color-charcoal-300); }
+.bg-charcoal-400 { background-color: var(--color-charcoal-400); }
+.bg-charcoal-500 { background-color: var(--color-charcoal-500); }
+.bg-charcoal-600 { background-color: var(--color-charcoal-600); }
+.bg-charcoal-700 { background-color: var(--color-charcoal-700); }
+.bg-charcoal-800 { background-color: var(--color-charcoal-800); }
+.bg-charcoal-900 { background-color: var(--color-charcoal-900); }
+.bg-charcoal-950 { background-color: var(--color-charcoal-950); }
+
+.bg-royal-purple-50 { background-color: var(--color-royal-purple-50); }
+.bg-royal-purple-100 { background-color: var(--color-royal-purple-100); }
+.bg-royal-purple-200 { background-color: var(--color-royal-purple-200); }
+.bg-royal-purple-300 { background-color: var(--color-royal-purple-300); }
+.bg-royal-purple-400 { background-color: var(--color-royal-purple-400); }
+.bg-royal-purple-500 { background-color: var(--color-royal-purple-500); }
+.bg-royal-purple-600 { background-color: var(--color-royal-purple-600); }
+.bg-royal-purple-700 { background-color: var(--color-royal-purple-700); }
+.bg-royal-purple-800 { background-color: var(--color-royal-purple-800); }
+.bg-royal-purple-900 { background-color: var(--color-royal-purple-900); }
+.bg-royal-purple-950 { background-color: var(--color-royal-purple-950); }

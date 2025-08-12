@@ -1,0 +1,42 @@
+# Node
+node_modules/
+**/node_modules/
+
+# Builds and caches
+**/.next/
+.next/
+.out/
+dist/
+build/
+coverage/
+.cache/
+.turbo/
+
+# Env files
+.env
+.env.*
+*.env
+
+# Prisma/SQLite
+**/prisma/*.db*
+**/*.sqlite*
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Lockfiles (keep package-lock.json tracked)
+# yarn.lock
+# pnpm-lock.yaml
+
+# Misc
+.vercel/
+.sentryclirc 
